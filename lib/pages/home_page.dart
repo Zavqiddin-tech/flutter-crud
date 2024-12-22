@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Notes'),
+        title: Center(child: const Text('Notes'),),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
