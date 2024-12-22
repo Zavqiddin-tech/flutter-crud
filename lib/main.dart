@@ -1,13 +1,13 @@
+import 'package:flutter/material.dart';
+import 'package:cli_project/auth/login_or_register.dart';
 import 'package:cli_project/firebase_options.dart';
 // import 'package:cli_project/home_screen/bloc/home_bloc.dart';
 // import 'package:cli_project/home_screen/screen/home_screen.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:cli_project/pages/home_page.dart';
-import 'package:cli_project/pages/login_page.dart';
 import 'package:cli_project/theme/dark_mode.dart';
 import 'package:cli_project/theme/light_mode.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,9 +23,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: lightMode,
       darkTheme: darkMode,
-      home: LoginPage(),
+      home: const LoginOrRegister(),
     );
   }
+
+}
 
   /* @override
   Widget build(BuildContext context) {
@@ -40,4 +42,3 @@ class MyApp extends StatelessWidget {
       ),
     );
   } */
-}
