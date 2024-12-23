@@ -1,5 +1,6 @@
 import 'package:cli_project/services/firestore.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -29,8 +30,8 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () {
                       // add a new note
                       if (docID == null) {
-                      firestoreService.addNote(textController.text);
-                      } 
+                        firestoreService.addNote(textController.text);
+                      }
 
                       // update an existing note
                       else {
@@ -48,11 +49,19 @@ class _HomePageState extends State<HomePage> {
             ));
   }
 
+  // logout user
+  void logout() {
+    FirebaseAuth.instance.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: const Text('Notes'),),
+        title: Center(
+          child: const Text('Notes'),
+        ),
+        actions: [IconButton(onPressed: logout, icon: Icon(Icons.logout))],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -81,9 +90,9 @@ class _HomePageState extends State<HomePage> {
 
                     // display as list tile
                     return ListTile(
-                      title: Text(noteText),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
+                        title: Text(noteText),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
                           children: [
                             // update button
                             IconButton(
@@ -96,8 +105,7 @@ class _HomePageState extends State<HomePage> {
                                     firestoreService.deleteNote(docID),
                                 icon: const Icon(Icons.delete)),
                           ],
-                        )
-                    );
+                        ));
                   });
             } else {
               return const Text('No notes...');

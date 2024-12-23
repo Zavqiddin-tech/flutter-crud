@@ -38,6 +38,8 @@ class _RegisterPageState extends State<RegisterPage> {
       displayMessageToUser("Passwords don't match", context);
     }
 
+    // if passwords do match
+    else {
     // try creating the user
     try {
       // create the user
@@ -55,6 +57,8 @@ class _RegisterPageState extends State<RegisterPage> {
       displayMessageToUser(e.code, context);
       return;
     }
+  }
+
   }
 
   @override

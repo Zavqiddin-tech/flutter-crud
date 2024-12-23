@@ -1,3 +1,4 @@
+import 'package:cli_project/auth/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cli_project/auth/login_or_register.dart';
 import 'package:cli_project/firebase_options.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: lightMode,
       darkTheme: darkMode,
-      home: const LoginOrRegister(),
+      home: const AuthPage(),
     );
   }
 
